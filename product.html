@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body style="text-align: center; width: 800px; margin: auto;">
+    <div class="header-section">
+        <div class="pull-left title">Product Add</div>
+        <div class="pull-right">      
+            <button id="btnsave" type="submit" value="post">Save</button>
+        </div>
+    </div>
+    
+    
+    <hr class="header-line">
+
+    <form id="item_register_frm" action="" method="post">
+        
+        <div>
+            <div class="label-field">SKU</div>            
+            <input id="sku" type="text" name="sku" placeholder="TR1205" required>
+            <br>
+            <br>
+            <div class="label-field">Name</div>             
+            <input id="name" type="text" name="ProductName" placeholder="Chair" required>
+            <br>
+            <br> 
+            <div class="label-field">Price</div>            
+            <input id="price" type="text" name="ProductPrice" placeholder="100" required>
+            <br>
+            <br>
+            <p>Please select type of product</p>
+            <input id="item-type" type="hidden" name="ProductPrice" vale="">
+        </div>
+        <div class="dropdown">
+
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type Swicher
+                <span class="caret"></span></button>
+
+            <ul class="dropdown-menu" id="sel-product">
+                <li><a index="0" href="#">Electronics</a></li>
+                <li><a index="1" href="#">Furniture</a></li>
+                <li><a index="2" href="#">Books</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="dimensions dimensions0">        
+                <label id="">Size</label>
+                <input type="number" id="size" placeholder="50" required>
+                <br>
+                <br>
+                <div>
+                    Please provide size.
+                </div>                
+            </div>
+            <div class="dimensions dimensions1">        
+                <label id="">Height</label>
+                <input type="number" id="height" placeholder="10" required>
+                <br>
+                <br>
+                <label id="width">Width</label>
+                <input type="number" id="width" placeholder="30" required>
+                <br>
+                <br>
+                <label id="">Length</label>
+                <input type="number" id="length" placeholder="25" required>
+                <br>        
+                <div>
+                    Please provide dimensions in HxWxL format.
+                </div>                
+            </div>
+            <div class="dimensions dimensions2">        
+                <label id="">Weight</label>
+                <input type="number" id="weight" placeholder="50" required>
+                <br>
+                <br>                
+                <div>
+                    Please provide weight.
+                </div>                
+            </div>
+            
+        </div>
+
+    </form>
+    
+    
+    <br>
+    
+
+    <br>
+    <br>
+    
+
+    <script>
+        
+    </script>
+    
+        <form method="get" action="productlist.html">
+              <button type="submit" id="btnlink">ProductList</button>
+        </form>
+</body>
+</head>
+
+</html>

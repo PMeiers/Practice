@@ -1,0 +1,82 @@
+#item_register_frm {
+	width: 350px;
+	
+}
+
+#item_register_frm div {
+	text-align: left;
+}
+.label-field, .dimensions label {
+	display: inline-block;
+    width: 60px;
+
+}
+.dropdown {
+
+}
+
+
+.dimensions {
+	display: none;
+}
+.dimensions1, .dimensions2, .dimensions0 {
+	display: none;
+	margin: auto;
+	padding: 10px;
+	width: 300px;
+}
+
+.dimensions0 {
+	
+}
+
+.dimensions1 {
+	
+}
+
+.dimensions2 {
+	
+}
+
+div.main-container {
+	text-align: center;
+	width: 1000px;
+	overflow: auto;
+	margin: auto;
+	padding: 30px;
+}
+
+div.header-section {	
+	padding:30px 2px;
+}
+
+.header-section .title {
+	font-size: 25px;
+}
+
+div.product {
+	border: 1px solid;
+    width: 250px;
+    height: 185px;
+    float: left;
+    margin: 10px;
+    padding: 2px 6px;
+    font-size: 22px;
+}
+
+input.chk-del {
+
+}
+.btn-apply {
+    margin-top: 5px;
+}
+
+.header-line {
+	margin-top: 5px; 
+    border-top: 1px solid black;
+}
+
+
+#btnlink{
+	float: right;
+}

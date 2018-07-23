@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header-section">
+            <div class="pull-left title">Product List</div>
+            <div class="pull-right">      
+                <select class="" id="sel-action">
+                    <option>Mass Delete Action</option>                
+                </select>
+                
+                <button id="btn-apply" >Apply</button>
+            </div>
+        </div>
+        <hr class="header-line">
+        <div id="products-container">                
+        </div>
+    </div>
+    
+
+    
+
+</body>
+<script>
+    $(function() {
+        $("#btn-apply").click(function() {
+            var selected = [];
+            $('#products-container input:checked').each(function() {
+                selected.push($(this).attr('index'));
+            });
+
+            console.log('selected');
+            console.log(selected);
+
+            $.post("delproducts.php", {selected: JSON.stringify(selected)}, function(data, status){
+                loadProducts();
+            });
+
+        });
+        loadProducts();
+        function loadProducts() {
+            $.post("getproductslist.php", {}, function(data){
+                // alert(data);
+                if(data == "0") {
+                    $("#products-container").html('');
+                    alert('There is no product!');
+                    return;
+                }
+                var products = jQuery.parseJSON(data);
+                console.log(products);
+                showProducts(products);
+            });
+            
+        }
+
+        function showProducts(products) {
+            var productsHtml = '';
+            products.forEach(function(d, i) {
+                console.log(d.spec);
+                var strSpec = '';
+                var spec = jQuery.parseJSON(d.spec);
+                switch(d.type) {
+                    case "0":                        
+                        strSpec = "Size: " + spec.size + "MB";
+                        break;
+                    case "1":
+                        strSpec = "Dimension: " + spec.height + "*" + spec.width + "*" + spec.length;
+                        break;
+                    case "2":
+                        strSpec = "Weight: " + spec.weight + "KG";
+                        break;
+                    default:
+                        break;
+                }
+                
+                var strProduct = 
+                    '<div class="product">' +
+                        '<input type="hidden" class="product-idx" value="' + d.id + '">' +
+                        '<div style="text-align:left;"><input type="checkbox" class="chk-del" value="" index="' + d.id + '""></div>' +
+                        '<div class="sku-cell">' + d.sku + '</div>' +
+                        '<div class="name-cell">' + d.name + '</div>' +
+                        '<div class="price-cell">' + d.price + '$' + '</div>' +
+                        '<div class="dimention-cell">' + strSpec + '</div>' +
+                    '</div>';
+
+                productsHtml += strProduct;
+            })
+            console.log(productsHtml);
+
+            $("#products-container").html(productsHtml);
+            
+        }
+
+        
+    });
+</script>
+</head>
+
+</html>
